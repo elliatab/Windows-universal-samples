@@ -13,6 +13,8 @@ namespace ASBMigrationSample
         public string FullName { get { return string.Format("{0} {1}", FirstName, LastName); } }
         public string Company { get; set; }
 
+        public bool Favorite { get; set; }
+
         public override string ToString()
         {
             return string.Format("{0} ({1})", FullName, Company);
@@ -23,8 +25,8 @@ namespace ASBMigrationSample
     {
         private static List<Contact> _contacts = new List<Contact>()
         {
-            new Contact(){FirstName="James", LastName="Buchanan", Company="Benton"},
-            new Contact(){FirstName="Josephine", LastName="Darakjy", Company="Chanay"},
+            new Contact(){FirstName="James", LastName="Buchanan", Company="Benton", Favorite=true},
+            new Contact(){FirstName="Josephine", LastName="Darakjy", Company="Chanay", Favorite=true},
             new Contact(){FirstName="Art", LastName="Venere", Company="Chemel"},
             new Contact(){FirstName="Lenna", LastName="Paprocki", Company="Feltz Printing Service"},
             new Contact(){FirstName="Donette", LastName="Foller", Company="Printing Dimensions"},

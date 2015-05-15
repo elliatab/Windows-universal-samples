@@ -18,6 +18,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <local:ContactToIconConverter x:Key="ContactToIconConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  Margin="12">
         <Grid.RowDefinitions>
@@ -51,7 +55,19 @@
                         QuerySubmitted="asb_QuerySubmitted"
                         SuggestionChosen="asb_SuggestionChosen"
                         Margin="24,0,0,24" Width="250" 
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left">
+                    <AutoSuggestBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!--<FontIcon Visibility="{Binding Favorite, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                                          Glyph="&#xE77B;" FontSize="20" Margin="15,19,0,0" />-->
+                                <SymbolIcon Symbol="{Binding Converter={StaticResource ContactToIconConverter}}"/>
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
+                  
+                </AutoSuggestBox>
                 <RelativePanel x:Name="ContactDetails" Grid.Row="1" HorizontalAlignment="Left" Visibility="Collapsed" Margin="24,0,0,0">
                     <Ellipse x:Name="ContactBackground" Fill="Gray" Height="100" Width="100" />
                     <FontIcon Glyph="&#xE77B;" FontSize="70" Margin="15,19,0,0" />
